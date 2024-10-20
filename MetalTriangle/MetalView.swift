@@ -83,7 +83,7 @@ struct MetalView: NSViewRepresentable {
 
             renderEncoder?.setRenderPipelineState(pipelineState)
             renderEncoder?.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
-            renderEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 3)
+            renderEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 3, instanceCount: 3)
 
             renderEncoder?.endEncoding()
             commandBuffer?.present(drawable)

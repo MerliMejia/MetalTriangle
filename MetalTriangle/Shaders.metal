@@ -11,9 +11,13 @@ struct VertexOut {
     float4 color;
 };
 
-vertex VertexOut vertex_main(VertexIn in [[stage_in]]) {
+vertex VertexOut vertex_main(VertexIn in [[stage_in]], uint instanceID [[instance_id]]) {
     VertexOut out;
-    out.position = in.position;
+
+    // Modify the position based on the instanceID
+    float xOffset = float(instanceID) * 0.3; // For example, offset each instance by 0.3 units on the X axis
+
+    out.position = in.position + float4(xOffset, 0.0, 0.0, 0.0);
     out.color = in.color;
     return out;
 }
